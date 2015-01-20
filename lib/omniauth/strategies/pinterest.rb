@@ -5,13 +5,13 @@ module OmniAuth
     class Pinterest < OmniAuth::Strategies::OAuth2
       option :client_options, {
         :site => 'https://pinterest.com',
-        :authorize_url => 'https://pinterest.com/oauth/authorize',
-        :token_url => 'https://api.pinterest.com/v2/oauth/access_token'
+        :authorize_url => 'https://pinterest.com/oauth',
+        :token_url => 'https://api.pinterest.com/v3/oauth/access_token'
       }
 
       def request_phase
-        options[:scope] ||= 'read'
-        options[:response_type] ||= 'code'
+        options[:scope] ||= 'read_write'
+        options[:response_type] ||= 'token'
         super
       end
 

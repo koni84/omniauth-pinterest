@@ -10,6 +10,7 @@ module OmniAuth
       }
 
       def request_phase
+        options[:scope] ||= 'read_write'
         options[:response_type] ||= 'token'
         super
       end

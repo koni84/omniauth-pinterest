@@ -3,6 +3,8 @@ require 'omniauth-oauth2'
 module OmniAuth
   module Strategies
     class Pinterest < OmniAuth::Strategies::OAuth2
+      option :name, "omnioauth_pinterest"
+
       option :client_options, {
         :site => 'https://pinterest.com',
         :authorize_url => 'https://pinterest.com/oauth',
@@ -10,7 +12,6 @@ module OmniAuth
       }
 
       def request_phase
-        options[:scope] ||= 'read_write'
         options[:response_type] ||= 'token'
         super
       end
